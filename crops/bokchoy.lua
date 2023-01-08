@@ -1,34 +1,18 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- bokchoy
-farming.register_plant("better_farming:bokchoy", {
-	description = minetest.colorize("Yellow","bokchoy Seed"),
+-- add to registered_plants
+farming.register_plant("better_farming:bokchoy",{
+	description = "Bokchoy Seed",
+	harvest_description = "Bokchoy",
 	inventory_image = "better_farming_bokchoy_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
 	steps = 3,
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	minlight = minlight,
-	maxlight = maxlight,
+	groups = { flammable = 2, grassland = 1 },
 	fertility = {"grassland"},
-	groups = {flammable = 4},
-	place_param2 = 3,
-	on_use = minetest.item_eat(1),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 16, -6 / 16, 6 / 16, 5 / 16, 6 / 16},
-	},
 })
 
 -- needed
 minetest.override_item("better_farming:bokchoy", {
-	description = minetest.colorize("DarkGreen","Bokchoy (Not a seed)"),
 	on_use = minetest.item_eat(1),
-	inventory_image = "better_farming_bokchoy.png",
 	groups = {food_tomato = 1, flammable = 3}
 })
 

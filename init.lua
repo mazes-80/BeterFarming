@@ -1,5 +1,10 @@
 local path = minetest.get_modpath("better_farming")
 
+-- Global
+better_farming = {
+	minlight = 7,
+	maxlight = default.LIGHT_MAX,
+}
 
 
 
@@ -13,12 +18,12 @@ local path = minetest.get_modpath("better_farming")
 	dofile(path .. "/crops/rice.lua")----Rice-7
 	dofile(path .. "/crops/cabbage.lua")----Cabbage-8
 	dofile(path .. "/crops/potatoes.lua")----Potatoes-9
-	dofile(path .. "/crops/aspargus.lua")----Aspargus-10
+	dofile(path .. "/crops/asparagus.lua")----Asparagus-10
 	dofile(path .. "/crops/eggplants.lua")----Eggplants-11
 	dofile(path .. "/crops/spinach.lua")----Spinach-12
 	dofile(path .. "/crops/corn.lua")----Corn-13
 	dofile(path .. "/crops/beetroot.lua")----Beetroot-14
-	dofile(path .. "/crops/medecinal_plant.lua")----Medecinal Plant-15
+	dofile(path .. "/crops/medicinal_plant.lua")----Medicinal Plant-15
 	dofile(path .. "/crops/ginger.lua")----Ginger-16
 	dofile(path .. "/crops/candy.lua")---Candy-17
 	dofile(path .. "/crops/mint.lua")---Mint-18

@@ -1,32 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- beetroot
-farming.register_plant("better_farming:beetroot", {
-	description = minetest.colorize("Yellow","Beetroot Seed"),
+-- add to registered_plants
+farming.register_plant("better_farming:beetroot",{
+	description = "Beetroot Seed",
+	harvest_description = "Beetroot",
 	inventory_image = "better_farming_beetroot_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
 	steps = 4,
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	minlight = minlight,
-	maxlight = maxlight,
+	groups = { flammable = 2, grassland = 1 },
 	fertility = {"grassland"},
-	groups = {flammable = 4},
-	place_param2 = 3,
-	on_use = minetest.item_eat(2),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 16, -6 / 16, 6 / 16, 5 / 16, 6 / 16},
-	},
 })
 
 -- needed
 minetest.override_item("better_farming:beetroot", {
-	description = minetest.colorize("Yellow","Beetroot (Not a seed)"),
 	on_use = minetest.item_eat(1),
 })
 

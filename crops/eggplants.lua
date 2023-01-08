@@ -1,34 +1,18 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- eggplants
-farming.register_plant("better_farming:eggplants", {
-	description = minetest.colorize("Yellow","Eggplants Seed"),
+-- add to registered_plants
+farming.register_plant("better_farming:eggplants",{
+	description = "Eggplant Seed",
+	harvest_description = "Eggplant",
 	inventory_image = "better_farming_eggplants_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
 	steps = 4,
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	minlight = minlight,
-	maxlight = maxlight,
+	groups = { flammable = 2, grassland = 1 },
 	fertility = {"grassland"},
-	groups = {flammable = 4},
-	place_param2 = 3,
-	on_use = minetest.item_eat(1),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 16, -6 / 16, 6 / 16, 5 / 16, 6 / 16},
-	},
 })
 
 -- needed
 minetest.override_item("better_farming:eggplants", {
-	description = minetest.colorize("Yellow","Eggplants (Not a seed)"),
 	on_use = minetest.item_eat(3),
-	inventory_image = "better_farming_eggplants.png",
 	groups = {food_tomato = 1, flammable = 3}
 })
 

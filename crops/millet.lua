@@ -1,72 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- millet
-minetest.register_craftitem("better_farming:millet", {
-	description = "millet",
-	inventory_image = "better_farming_millet.png",
-	groups = {seed = 2, food_millet = 1, flammable = 2},
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "better_farming:millet_1")
-	end,
-	on_use = minetest.item_eat(1)
+-- add to registered_plants
+farming.register_plant("better_farming:millet",{
+	description = "Millet Seed",
+	harvest_description = "Millet",
+	inventory_image = "better_farming_millet_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
+	steps = 3,
+	groups = { flammable = 2, grassland = 1, desert = 1 },
+	fertility = {"grassland","desert"},
 })
 
--- millet definition
-local def = {
-	drawtype = "plantlike",
-	tiles = {"better_farming_millet_1.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drop = "",
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 8, -6 / 16, 6 / 16, 1 / 55, 6 / 16},
-	},
-	groups = {
-		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
-		not_in_creative_inventory = 1, growing = 1
-	},
-	sounds = default.node_sound_leaves_defaults()
-}
-
--- stage 1
-minetest.register_node("better_farming:millet_1", table.copy(def))
-
--- stage 2
-def.tiles = {"better_farming_millet_2.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:millet"}, rarity = 1},
-		{items = {"better_farming:millet 2"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:millet_2", table.copy(def))
-
--- stage 3
-def.tiles = {"better_farming_millet_3.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:millet"}, rarity = 1},
-		{items = {"better_farming:millet 3"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:millet_3", table.copy(def))
-
-
--- add to registered_plants
-farming.registered_plants["better_farming:millet"] = {
-	crop = "better_farming:millet",
-	seed = "better_farming:millet",
-	minlight = farming.min_light,
-	maxlight = farming.max_light,
-	steps = 3
-}
 -- needed
 minetest.override_item("better_farming:millet", {
-	description = minetest.colorize("Yellow","Millet (Seed)"),
 	on_use = minetest.item_eat(1),
 })
 

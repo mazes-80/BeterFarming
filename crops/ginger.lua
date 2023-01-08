@@ -1,80 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- ginger
-minetest.register_craftitem("better_farming:ginger", {
-	description = "ginger",
-	inventory_image = "better_farming_ginger.png",
-	groups = {seed = 2, food_ginger = 1, flammable = 2},
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "better_farming:ginger_1")
-	end,
-	on_use = minetest.item_eat(1)
+-- add to registered_plants
+farming.register_plant("better_farming:ginger",{
+	description = "Ginger Seed",
+	harvest_description = "Ginger",
+	inventory_image = "better_farming_ginger_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
+	steps = 4,
+	groups = { flammable = 2, grassland = 1 },
+	fertility = {"grassland"},
 })
 
--- ginger definition
-local def = {
-	drawtype = "plantlike",
-	tiles = {"better_farming_ginger_1.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drop = "",
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 8, -6 / 16, 6 / 16, 1 / 55, 6 / 16},
-	},
-	groups = {
-		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
-		not_in_creative_inventory = 1, growing = 1
-	},
-	sounds = default.node_sound_leaves_defaults()
-}
-
--- stage 1
-minetest.register_node("better_farming:ginger_1", table.copy(def))
-
-
--- stage 2
-def.tiles = {"better_farming_ginger_2.png"}
-minetest.register_node("better_farming:ginger_2", table.copy(def))
-
-
-
--- stage 3
-def.tiles = {"better_farming_ginger_3.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:ginger"}, rarity = 1},
-		{items = {"better_farming:ginger 2"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:ginger_3", table.copy(def))
-
-
--- stage 4
-def.tiles = {"better_farming_ginger_4.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:ginger"}, rarity = 1},
-		{items = {"better_farming:ginger 2"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:ginger_4", table.copy(def))
-
-
--- add to registered_plants
-farming.registered_plants["better_farming:ginger"] = {
-	crop = "better_farming:ginger",
-	seed = "better_farming:ginger",
-	minlight = farming.min_light,
-	maxlight = farming.max_light,
-	steps = 4
-}
 -- needed
 minetest.override_item("better_farming:ginger", {
-	description = minetest.colorize("Yellow","Ginger (Seed)"),
 	on_use = minetest.item_eat(1),
 })
 
@@ -101,7 +38,7 @@ minetest.register_decoration({
 ----------------------Gingerdough
 
 minetest.register_craftitem("better_farming:gingerdough", {
-	description = minetest.colorize("Brown","GingerDough"),
+	description = "Gingerdough",
 	inventory_image = "gingerdough.png",
 	on_use = minetest.item_eat(1),
 	groups = {food_cotton_candy = 1, flammable = 2},
@@ -116,7 +53,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "better_farming:gingerdough 3",
 	recipe = {
-		{"better_farming:glass_bottle_with_water", "farming:flour", "better_farming:ginger"},
+		{"bottles:bottle_of_water", "farming:flour", "better_farming:ginger"},
 		{"better_farming:sugar", "better_farming:sugar", ""},
 	}
 })
@@ -124,7 +61,7 @@ minetest.register_craft({
 ----------------------Gingerbread
 
 minetest.register_craftitem("better_farming:gingerbread", {
-	description = minetest.colorize("Brown","GingerBread"),
+	description = "Gingerbread",
 	inventory_image = "gingerbread.png",
 	on_use = minetest.item_eat(2),
 	groups = {food_cotton_candy = 1, flammable = 2},
@@ -136,10 +73,10 @@ minetest.register_craft({
 	recipe = "better_farming:gingerdough",
 })
 
------Girgerbread Man--------------
+-----Gingerbread Man--------------
 
 minetest.register_craftitem("better_farming:gingerbread_man", {
-	description = minetest.colorize("Brown","Girgerbread Man"),
+	description = "Gingerbread Man",
 	inventory_image = "gingerbread_man_1.png",
 	on_use = minetest.item_eat(1),
 	groups = {food_cotton_candy = 1, flammable = 2},
