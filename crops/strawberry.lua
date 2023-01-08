@@ -1,32 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- strawberry
-farming.register_plant("better_farming:strawberry", {
-	description = minetest.colorize("Yellow","Strawberry Seed"),
+-- add to registered_plants
+farming.register_plant("better_farming:strawberry",{
+	description = "Strawberry Seed",
+	harvest_description = "Strawberry",
 	inventory_image = "better_farming_strawberry_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
 	steps = 8,
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	minlight = minlight,
-	maxlight = maxlight,
+	groups = { flammable = 2, grassland = 1 },
 	fertility = {"grassland"},
-	groups = {flammable = 4},
-	place_param2 = 3,
-	on_use = minetest.item_eat(2),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 16, -6 / 16, 6 / 16, 5 / 16, 6 / 16},
-	},
 })
 
 -- needed
 minetest.override_item("better_farming:strawberry", {
-	description = minetest.colorize("Yellow","Strawberry (Not a seed)"),
 	on_use = minetest.item_eat(3),
 })
 
@@ -51,20 +36,18 @@ minetest.register_decoration({
 })
 
 if minetest.get_modpath("animalia") then
+	minetest.register_craftitem("better_farming:strawberry_cake", {
+		description = "Strawberry Cake",
+		on_use = minetest.item_eat(5),
+		inventory_image = "better_farming_strawberry_cake.png",
+	})
 
-minetest.register_craftitem("better_farming:strawberry_cake", {
-	description = minetest.colorize("Yellow","Strawberry Cake"),
-	on_use = minetest.item_eat(5),
-	inventory_image = "better_farming_strawberry_cake.png",
-})
+	minetest.register_craft({
+		output = "better_farming:strawberry_cake",
+		recipe = {
+			{"better_farming:strawberry", "better_farming:strawberry", "better_farming:strawberry" },
+			{"animalia:chicken_egg_fried", "farming:flour", "animalia:chicken_egg_fried" },
+			{"farming:flour", "farming:flour", "farming:flour" }
+		}
+	})
 end
-minetest.register_craft({
-	output = "better_farming:strawberry_cake",
-	recipe = {
-		{"better_farming:strawberry", "better_farming:strawberry", "better_farming:strawberry" },
-		{"animalia:chicken_egg_fried", "farming:flour", "animalia:chicken_egg_fried" },
-		{"farming:flour", "farming:flour", "farming:flour" }
-	}
-})
-
-

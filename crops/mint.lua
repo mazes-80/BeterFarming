@@ -1,32 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- mint
-farming.register_plant("better_farming:mint", {
-	description = minetest.colorize("LightGreen","Mint Seed"),
+-- add to registered_plants
+farming.register_plant("better_farming:mint",{
+	description = "Mint Seed",
+	harvest_description = "Mint",
 	inventory_image = "better_farming_mint_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
 	steps = 4,
-	drawtype = "plantlike",
-	waving = 1,
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	minlight = minlight,
-	maxlight = maxlight,
+	groups = { flammable = 2, grassland = 1 },
 	fertility = {"grassland"},
-	groups = {flammable = 4},
-	place_param2 = 3,
-	on_use = minetest.item_eat(2),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 16, -6 / 16, 6 / 16, 5 / 16, 6 / 16},
-	},
 })
 
 -- needed
 minetest.override_item("better_farming:mint", {
-	description = minetest.colorize("LightGreen","Mint (Seed)"),
 	on_use = minetest.item_eat(2),
 })
 

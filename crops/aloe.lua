@@ -1,72 +1,17 @@
-local minlight = 7
-local maxlight = default.LIGHT_MAX
-
--- aloe
-minetest.register_craftitem("better_farming:aloe", {
-	description = "aloe",
-	inventory_image = "better_farming_aloe.png",
-	groups = {seed = 2, food_aloe = 1, flammable = 2},
-	on_place = function(itemstack, placer, pointed_thing)
-		return farming.place_seed(itemstack, placer, pointed_thing, "better_farming:aloe_1")
-	end,
-	on_use = minetest.item_eat(1)
+-- add to registered_plants
+farming.register_plant("better_farming:aloe",{
+	description = "Aloe Seed",
+	harvest_description = "Aloe",
+	inventory_image = "better_farming_aloe_seed.png",
+	minlight = better_farming.minlight,
+	maxlight = better_farming.maxlight,
+	steps = 3,
+	groups = { flammable = 2, desert = 1 },
+	fertility = {"desert"},
 })
 
--- aloe definition
-local def = {
-	drawtype = "plantlike",
-	tiles = {"better_farming_aloe_1.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drop = "",
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -8 / 8, -6 / 16, 6 / 16, 1 / 55, 6 / 16},
-	},
-	groups = {
-		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
-		not_in_creative_inventory = 1, growing = 1
-	},
-	sounds = default.node_sound_leaves_defaults()
-}
-
--- stage 1
-minetest.register_node("better_farming:aloe_1", table.copy(def))
-
--- stage 2
-def.tiles = {"better_farming_aloe_2.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:aloe"}, rarity = 1},
-		{items = {"better_farming:aloe 2"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:aloe_2", table.copy(def))
-
--- stage 3
-def.tiles = {"better_farming_aloe_3.png"}
-def.drop = {
-	items = {
-		{items = {"better_farming:aloe"}, rarity = 1},
-		{items = {"better_farming:aloe 3"}, rarity = 3}
-	}
-}
-minetest.register_node("better_farming:aloe_3", table.copy(def))
-
-
--- add to registered_plants
-farming.registered_plants["better_farming:aloe"] = {
-	crop = "better_farming:aloe",
-	seed = "better_farming:aloe",
-	minlight = farming.min_light,
-	maxlight = farming.max_light,
-	steps = 3
-}
 -- needed
 minetest.override_item("better_farming:aloe", {
-	description = minetest.colorize("Yellow","Aloe (Seed)"),
 	on_use = minetest.item_eat(1),
 })
 
