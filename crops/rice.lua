@@ -47,3 +47,5 @@ minetest.register_craft({
 	output = "better_farming:onigiri",
 	recipe = "better_farming:rice",
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:rice_", 8, "better_farming:seed_rice"})

@@ -48,3 +48,5 @@ minetest.register_craft({
 		{"better_farming:gingerbread", "better_farming:adzuki", ""},
 	}
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:adzuki_", 7, "better_farming:seed_adzuki"})

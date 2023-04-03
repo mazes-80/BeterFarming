@@ -48,3 +48,5 @@ minetest.register_craft({
 		{"better_farming:chilie"},
 	}
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:chilie_", 5, "better_farming:seed_chilie"})

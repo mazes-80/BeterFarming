@@ -47,3 +47,5 @@ minetest.register_craft({
 	output = "better_farming:chips 3",
 	recipe = "better_farming:potatoes",
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:potatoes_", 4, "better_farming:seed_potatoes"})

@@ -42,3 +42,5 @@ minetest.register_craft({
 		{"better_farming:jute"},
 	}
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:jute_", 3, "better_farming:seed_jute"})

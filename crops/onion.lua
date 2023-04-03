@@ -34,3 +34,5 @@ minetest.register_decoration({
 	decoration = "better_farming:onion_8",
 	param2 = 3,
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:onion_", 8, "better_farming:seed_onion"})

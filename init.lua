@@ -5,6 +5,7 @@ better_farming = {
 	minlight = 7,
 	maxlight = default.LIGHT_MAX,
 }
+better_farming.plant_infos = {}
 
 
 

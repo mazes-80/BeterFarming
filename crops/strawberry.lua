@@ -51,3 +51,5 @@ if minetest.get_modpath("animalia") then
 		}
 	})
 end
+
+table.insert(better_farming.plant_infos, {"better_farming:strawberry_", 8, "better_farming:seed_strawberry"})

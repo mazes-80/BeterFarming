@@ -59,3 +59,5 @@ minetest.register_craft({
 		{"vessels:glass_bottle", "better_farming:beetroot"},
 	}
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:beetroot_", 4, "better_farming:seed_beetroot"})

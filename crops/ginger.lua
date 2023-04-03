@@ -91,3 +91,5 @@ minetest.register_craft({
 		{"better_farming:gingerdough", "", "better_farming:gingerdough"},
 	}
 })
+
+table.insert(better_farming.plant_infos, {"better_farming:ginger_", 4, "better_farming:ginger_seed"})
